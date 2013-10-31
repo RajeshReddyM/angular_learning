@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="project">
+  <head>
+    <script src="javascripts/angular.min.js"></script>
+    <script src="javascripts/angular-resource.min.js"></script>
+    <script src="javascripts/jquery-1.8.0.min.js"></script>
+    <script src="javascripts/semantic.min.js"></script>
+    <script src="javascripts/todo.js"></script>
+    <link rel="stylesheet" href="stylesheets/todo.css">
+    <link rel="stylesheet" href="stylesheets/semantic.min.css">
+  </head>
+  <body>
+    <div>
+      <div class="ui form">
+    	  <div class="inline field">
+          <label>Name:</label>
+          <input type="text" ng-model="yourName" placeholder="Enter a name here">
+          <hr>
+          <h1>Hello {{yourName}}!</h1>
+        </div>
+      </div>
+    </div>
+    <h2>Todo</h2>
+    <div ng-controller="TodoCtrl">
+      <span>{{remaining()}} of {{todos.length}} remaining</span>
+      [ <a href="" ng-click="archive()">archive</a> ]
+      <ul class="unstyled">
+        <li ng-repeat="todo in todos">
+          <input type="checkbox" ng-model="todo.done">
+          <span class="done-{{todo.done}}">{{todo.text}}</span>
+        </li>
+      </ul>
+      <form ng-submit="addTodo()">
+      	<div class="ui form">
+      		<div class="inline field">
+      			<label>Add Todo item</label>
+              <input type="text" ng-model="todoText"  size="30"
+                  placeholder="add new todo here">
+            </div>
+        </div>
+
+        <input class="ui blue submit button" type="submit" value="add">
+
+      </form>
+    </div>
+  </body>
+</html>
